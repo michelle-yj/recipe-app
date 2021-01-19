@@ -1,0 +1,56 @@
+backend:
+  name: github
+  repo: michelle-yj/recipe-app
+  api_root: https://api.github.com
+  branch: master
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "recipe"
+    editor:
+      preview: true
+    label: "Recipe"
+    folder: "src/pages/recipes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "recipe-post",
+        }
+      - { label: Title, name: title, widget: string }
+      - { label: "Publish Date", name: date, widget: datetime }
+      - { label: Serves, name: serves, widget: string }
+      - {
+          label: Ingredients,
+          name: ingredients,
+          widget: list,
+          fields:
+            [
+              { label: Quantity, name: quantity, widget: string },
+              { label: Ingredient, name: ingredient, widget: string },
+            ],
+        }
+      - {
+          label: Steps,
+          name: steps,
+          widget: list,
+          fields: [{ label: Step, name: step, widget: string }],
+        }
+      - {
+          label: "Featured Image",
+          name: featuredimage,
+          widget: image,
+          required: false,
+        }
+      - { label: Body, name: body, widget: markdown }
