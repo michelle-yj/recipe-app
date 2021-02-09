@@ -4,14 +4,14 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import Banner from "../components/banner"
-import CardContainer from "../components/cardcontainer"
+import RecipesList from "../components/recipeslist"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Banner />
     <h3>POPULAR RECIPES</h3>
-    <CardContainer />
+    <RecipesList />
   </Layout>
 )
 

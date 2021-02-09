@@ -8,21 +8,13 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 1px solid grey;
-  width: 300px;
-  height: 400px;
   margin-top: 24px;
   margin-right: 24px;
 `
 
-const CardContainer = () => (
+const CardContainer = props => (
   <>
-    <StyledContainer>
-      <CardDetails />
-    </StyledContainer>
-    <StyledContainer>
-      <CardDetails />
-    </StyledContainer>
+    <StyledContainer>{props.children}</StyledContainer>
   </>
 )
 

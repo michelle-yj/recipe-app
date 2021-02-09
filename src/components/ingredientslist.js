@@ -9,6 +9,7 @@ const StyledIngredients = styled.div`
   height: 100%;
   padding: 20px;
   margin-bottom: 20px;
+  margin-top: 20px;
 `
 
 const IngredientsList = props => (

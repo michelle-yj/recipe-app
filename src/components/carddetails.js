@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import PreviewCompatibleImage from "./PreviewCompatibleImage"
 
 const StyledDetails = styled.div`
   display: flex;
@@ -8,9 +9,13 @@ const StyledDetails = styled.div`
   justify-content: flex-end;
   padding-left: 16px;
   padding-bottom: 16px;
+  width: 33%;
+  border: 1px solid grey;
+  height: 400px;
+  margin: 16px;
 `
 
-const CardDetails = () => (
+const CardDetails = ({ recipe }) => (
   <>
     <StyledDetails>
       <div
@@ -19,11 +24,21 @@ const CardDetails = () => (
           paddingBottom: `8px`,
         }}
       >
-        <b>Recipe #1</b>
+        {console.log(recipe)}
+        <b>
+          <Link to={recipe.fields.slug}>{recipe.frontmatter.title}</Link>
+        </b>
       </div>
-      <div></div>
+      <div>
+        <PreviewCompatibleImage
+          imageInfo={{
+            image: recipe.frontmatter.featuredimage,
+            alt: `image of ${recipe.frontmatter.title}`,
+          }}
+        />
+      </div>
       <div>Cook Time: 30 min</div>
-      <div>Serves: 4</div>
+      <div>Serves: {recipe.frontmatter.serves}</div>
     </StyledDetails>
   </>
 )

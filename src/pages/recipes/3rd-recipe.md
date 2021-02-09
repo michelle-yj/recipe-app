@@ -8,4 +8,5 @@ ingredients:
     ingredient: test
 steps:
   - step: step1
+featuredimage: /img/tomato-linguine.jpg
 ---
