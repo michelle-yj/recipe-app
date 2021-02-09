@@ -11,11 +11,15 @@ import {
   FacebookIcon,
   FacebookShareButton,
   PinterestIcon,
+  PinterestShareButton,
   TwitterIcon,
+  TwitterShareButton,
 } from "react-share"
 
 export const RecipePostTemplate = props => {
-  const shareUrl = `https://michellesrecipe.netlify.app${props.fields.slug}`
+  const siteUrl = "https://michellesrecipe.netlify.app"
+  const shareUrl = `${siteUrl}${props.fields.slug}`
+  const mediaUrl = `${siteUrl}${props.featuredimage.childImageSharp.fluid.src}`
   return (
     <Layout>
       <div className="recipe-content">
@@ -42,8 +46,16 @@ export const RecipePostTemplate = props => {
             <FacebookShareButton url={shareUrl}>
               <FacebookIcon />
             </FacebookShareButton>
-            <PinterestIcon />
-            <TwitterIcon />
+            <PinterestShareButton url={shareUrl} media={mediaUrl}>
+              <PinterestIcon />
+            </PinterestShareButton>
+            <TwitterShareButton
+              url={shareUrl}
+              title="check out this recipe!"
+              hashtags={["recipe", "yummy", "cooking"]}
+            >
+              <TwitterIcon />
+            </TwitterShareButton>
           </div>
           <p>
             <b>Ingredients:</b>
